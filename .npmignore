@@ -2,3 +2,12 @@ secrets.ejson
 netlify.toml
 demo/
 tests/
+.eslintcache
+.eslintrc.yml
+.prettierrc.yml
+screenshot1.png
+.github
+node_modules
+bin/
+.envrc.example
+.envrc
