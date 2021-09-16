@@ -119,4 +119,4 @@ netlify-build
 ## Credits
 
 * I borrow lots of the structure for this repo from [netlify-plugin-a11y](https://github.com/netlify-labs/netlify-plugin-a11y)
-* Thanks to Shopify for the [ejson2kms](https://github.com/Shopify/ejson2env)
+* Thanks to Shopify for the [ejson](https://github.com/Shopify/ejson)
