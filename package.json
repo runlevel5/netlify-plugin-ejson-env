@@ -1,5 +1,5 @@
 {
-  "name": "netlify-plugin-ejson-env",
+  "name": "@runlevel5/netlify-plugin-ejson-env",
   "version": "0.0.1",
   "description": "Netlify plugin that would populate the environment with variables defined in EJSON secrets file",
   "main": "src/index.js",
@@ -37,8 +37,15 @@
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.1.2"
   },
-  "repository": "https://github.com/runlevel5/netlify-plugin-ejson-env",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/runlevel5/netlify-plugin-ejson-env.git"
+  },
   "bugs": {
     "url": "https://github.com/runlevel5/netlify-plugin-ejson-env/issues"
+  },
+  "homepage": "https://github.com/runlevel5/netlify-plugin-ejson-env#readme",
+  "directories": {
+    "test": "tests"
   }
 }
