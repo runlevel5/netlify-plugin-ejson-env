@@ -27,8 +27,7 @@ module.exports = {
         await run('curl', ['-sL', `-o${ejsonBinaryPath}`, downloadURL])
         await run('chmod', ['+x', ejsonBinaryPath])
       } catch (err) {
-        console.log(err)
-        // return build.failBuild(err);
+        return build.failBuild(err);
       }
     }
 
