@@ -1,4 +1,4 @@
-const onPreBuild = require('./index').onPreBuild;
+const onPreBuild = require('../src/index').onPreBuild;
 
 describe('onPreBuild', () => {
   const OLD_ENV = process.env;
@@ -18,7 +18,7 @@ describe('onPreBuild', () => {
     process.env = OLD_ENV;
   });
 
-  describe('when private key environment variable is missing', async () => {
+  describe('when private key environment variable is missing', () => {
     it('raises error', async () => {
       delete process.env.EJSON_PRIVATE_KEY
 
@@ -30,7 +30,7 @@ describe('onPreBuild', () => {
     });
   });
 
-  describe('when secret EJSON file does not exist', async () => {
+  describe('when secret EJSON file does not exist', () => {
     it('raises error', async () => {
       try {
         await onPreBuild({ inputs: { ejsonSecretsFilePath: "./missingFile.ejson" }, utils: utils });
