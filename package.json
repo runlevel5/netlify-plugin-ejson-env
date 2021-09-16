@@ -10,8 +10,7 @@
     "lint": "npm run eslint && npm run prettier",
     "eslint": "eslint --ignore-path .gitignore --fix --cache --format=codeframe --max-warnings=0 \"{src,init}/**/*.js\"",
     "prettier": "prettier --ignore-path .gitignore --write --loglevel warn \"{.github,src,init}/**/*.{js,md,yml,json}\" \"*.{js,md,yml,json}\"",
-    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
-    "prepublishOnly": "git push && git push --tags && gh-release"
+    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md"
   },
   "keywords": [
     "netlify",
@@ -22,7 +21,7 @@
   "author": "Trung Lê <trung.le@ruby-journal.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=14.17.0"
+    "node": ">=12.18.0"
   },
   "devDependencies": {
     "auto-changelog": "^1.16.2",
