@@ -2,7 +2,7 @@
   "name": "netlify-plugin-ejson-env",
   "version": "0.0.1",
   "description": "Netlify plugin that would populate the environment with variables defined in EJSON secrets file",
-  "main": "plugin/index.js",
+  "main": "src/index.js",
   "dependencies": {},
   "scripts": {
     "build": "netlify build",

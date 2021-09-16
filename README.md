@@ -77,7 +77,7 @@ package = "netlify-plugin-ejson-env"
 
   # all inputs are optional, we just show you the defaults below
   [plugins.inputs]
-  
+
   ejsonPrivateKeyEnvVarName = "EJSON_PRIVATE_KEY" # the environment variable name that contains the EJSON private key as value
   ejsonSecretsFilePath = "./secrets.ejson" # the EJSON file that contains encrypted key-value pairs
 ```
@@ -101,8 +101,18 @@ To test the execution of the Netlify Build lifecycle locally, first ensure that 
 # Ensure that you have the netlify build command available
 # (in future this will be provided via the CLI)
 npm install @netlify/build -g
+```
 
-# In the project working directory, run the build as netlify would with the build bot
+and [direnv](http://direnv.net) is installed:
+
+```
+cp .envrc.example .envrc
+direnv allow
+```
+
+then in the project working directory, run the build as netlify would with the build bot:
+
+```
 netlify-build
 ```
 
