@@ -65,8 +65,10 @@ module.exports = {
 
     // Populate environment variables
     try {
+      console.log("Populating environment variables ...")
+
       Object.keys(envVars).forEach(key => {
-        console.log(`Populate environment variable ${key}`)
+        console.log(`  * ${key}`);
         process.env[key] = envVars[key]
       })
     } catch {
