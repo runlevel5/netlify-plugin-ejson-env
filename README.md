@@ -80,7 +80,7 @@ file:
 
 ```toml
 [[plugins]]
-package = "netlify-plugin-ejson-env"
+package = "@runlevel5/netlify-plugin-ejson-env"
 
   # all inputs are optional, we just show you the defaults below
   [plugins.inputs]
@@ -94,7 +94,7 @@ npm, yarn, or any other Node.js package manager to add the plugin to
 `devDependencies` in `package.json`.
 
 ```bash
-npm install -D netlify-plugin-ejson-env
+npm install -D @runlevel5/netlify-plugin-ejson-env
 ```
 
 ### Execution in Netlify
