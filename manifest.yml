@@ -1,0 +1,8 @@
+name: netlify-plugin-ejson-env
+inputs:
+  - name: ejsonPrivateKeyEnvVarName
+    default: 'EJSON_PRIVATE_KEY'
+    required: false
+  - name: ejsonSecretsFilePath
+    default: './secrets.ejson'
+    required: false
