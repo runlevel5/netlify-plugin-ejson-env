@@ -1,4 +1,5 @@
 # netlify-plugin-ejson-env
+
 A better way to store secret environment variables on netlify
 
 ## Usage
@@ -20,7 +21,8 @@ store the private key to environment variable:
 $ export EJSON_PRIVATE_KEY="75b80b4a693156eb435f4ed2fe397e583f461f09fd99ec2bd1bdef0a56cf6e64"
 ```
 
-please make sure you store this private key in somewhere safe. Please don't lose it!!
+please make sure you store this private key in somewhere safe. Please don't lose
+it!!
 
 then create the `secrets.ejson` file in your project root folder:
 
@@ -69,9 +71,12 @@ EJSON_PRIVATE_KEY: "75b80b4a693156eb435f4ed2fe397e583f461f09fd99ec2bd1bdef0a56cf
 
 ![Build environment](./screenshot1.png)
 
-Let's move on to install the plugin in the Netlify UI, use this [direct in-app installation link](https://app.netlify.com/plugins/netlify-plugin-ejson-env/install) or go to the [Plugins directory](https://app.netlify.com/plugins).
+Let's move on to install the plugin in the Netlify UI, use this
+[direct in-app installation link](https://app.netlify.com/plugins/netlify-plugin-ejson-env/install)
+or go to the [Plugins directory](https://app.netlify.com/plugins).
 
-For file-based installation, add the following lines to your `netlify.toml` file:
+For file-based installation, add the following lines to your `netlify.toml`
+file:
 
 ```toml
 [[plugins]]
@@ -84,7 +89,9 @@ package = "netlify-plugin-ejson-env"
   ejsonSecretsFilePath = "./secrets.ejson" # the EJSON file that contains encrypted key-value pairs
 ```
 
-To complete file-based installation, from your project's base directory, use npm, yarn, or any other Node.js package manager to add the plugin to `devDependencies` in `package.json`.
+To complete file-based installation, from your project's base directory, use
+npm, yarn, or any other Node.js package manager to add the plugin to
+`devDependencies` in `package.json`.
 
 ```bash
 npm install -D netlify-plugin-ejson-env
@@ -92,12 +99,14 @@ npm install -D netlify-plugin-ejson-env
 
 ### Execution in Netlify
 
-Once installed and configured, the plugin will automatically run in the Netlify CI during its specified Netlify Build lifecycle event and all key-value pairs in
+Once installed and configured, the plugin will automatically run in the Netlify
+CI during its specified Netlify Build lifecycle event and all key-value pairs in
 the secrets EJSON file would be populated as environment variables.
 
 ### Executing locally
 
-To test the execution of the Netlify Build lifecycle locally, first ensure that netlify-build is installed:
+To test the execution of the Netlify Build lifecycle locally, first ensure that
+netlify-build is installed:
 
 ```bash
 # Ensure that you have the netlify build command available
@@ -112,7 +121,8 @@ cp .envrc.example .envrc
 direnv allow
 ```
 
-then in the project working directory, run the build as netlify would with the build bot:
+then in the project working directory, run the build as netlify would with the
+build bot:
 
 ```
 netlify-build
@@ -120,5 +130,6 @@ netlify-build
 
 ## Credits
 
-* I borrow lots of the structure for this repo from [netlify-plugin-a11y](https://github.com/netlify-labs/netlify-plugin-a11y)
-* Thanks to Shopify for the [ejson](https://github.com/Shopify/ejson)
+- I borrow lots of the structure for this repo from
+  [netlify-plugin-a11y](https://github.com/netlify-labs/netlify-plugin-a11y)
+- Thanks to Shopify for the [ejson](https://github.com/Shopify/ejson)
