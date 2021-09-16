@@ -2,65 +2,47 @@ const onPreBuild = require('./index').onPreBuild;
 
 describe('onPreBuild', () => {
   const OLD_ENV = process.env;
+  const utils = {
+    build: {
+      failBuild: () => { throw "utils.build.failBuild" }
+    }
+  }
 
   beforeEach(() => {
     jest.resetModules();
     process.env = { ...OLD_ENV };
+    process.env.EJSON_PRIVATE_KEY = "5b9b60e59127147ff8a7a74de8512d5c1b1321e2679294bfa84194bb911b2fa6";
   });
 
   afterEach(() => {
     process.env = OLD_ENV;
   });
 
-  describe('when EJSON_PRIVATE_KEY environment variable is missing', () => {
-    it('returns error', async () => {
-      await onPreBuild({ inputs: {} });
+  describe('when private key environment variable is missing', async () => {
+    it('raises error', async () => {
+      delete process.env.EJSON_PRIVATE_KEY
 
-      expect(process.env.MY_SECRET).toBeUndefined();
+      try {
+        await onPreBuild({ inputs: { ejsonPrivateKeyEnvVarName: "EJSON_PRIVATE_KEY" }, utils: utils });
+      } catch(err) {
+        expect(err).toBe("utils.build.failBuild");
+      }
     });
   });
 
-  // describe('with suffix context prefix ENV overrides', () => {
-  //   it('sets ENV vars to the correct values', async () => {
-  //     process.env.DATABASE_URL = 'https://dev.com';
-  //     process.env.DATABASE_URL_STAGING = 'https://stage.com';
-  //     process.env.CONTEXT = 'staging';
-  //     await onPreBuild({ inputs: { mode: 'suffix' } });
+  describe('when secret EJSON file does not exist', async () => {
+    it('raises error', async () => {
+      try {
+        await onPreBuild({ inputs: { ejsonSecretsFilePath: "./missingFile.ejson" }, utils: utils });
+      } catch(err) {
+        expect(err).toBe("utils.build.failBuild");
+      }
+    });
+  });
 
-  //     expect(process.env.DATABASE_URL).toBe(process.env.DATABASE_URL_STAGING);
-  //   });
-  // });
-
-  // describe('with branch ENV overrides', () => {
-  //   it('sets ENV vars to the correct values', async () => {
-  //     process.env.DATABASE_URL = 'https://dev.com';
-  //     process.env.HELLO_DATABASE_URL = 'https://stage.com';
-  //     process.env.BRANCH = 'hello';
-  //     await onPreBuild({ inputs: { mode: 'prefix' } });
-
-  //     expect(process.env.DATABASE_URL).toBe(process.env.HELLO_DATABASE_URL);
-  //   });
-  // });
-
-  // describe('with suffix branch ENV overrides', () => {
-  //   it('sets ENV vars to the correct values', async () => {
-  //     process.env.DATABASE_URL = 'https://dev.com';
-  //     process.env.DATABASE_URL_HELLO = 'https://stage.com';
-  //     process.env.BRANCH = 'hello';
-  //     await onPreBuild({ inputs: { mode: 'suffix' } });
-
-  //     expect(process.env.DATABASE_URL).toBe(process.env.DATABASE_URL_HELLO);
-  //   });
-  // });
-
-  // describe('without ENV overrides', () => {
-  //   it('does not change ENV vars', async () => {
-  //     process.env.DATABASE_URL = 'https://dev.com';
-  //     process.env.DATABASE_URL_HELLO = 'https://dontsetme.com';
-  //     process.env.BRANCH = 'hello';
-  //     await onPreBuild({ inputs: { mode: 'suffix' } });
-
-  //     expect(process.env.DATABASE_URL).toBe(process.env.DATABASE_URL_HELLO);
-  //   });
-  // });
+  it('decrypt EJSON file then populate environment variables', async () => {
+    expect(process.env.MY_SECRET).toBeUndefined();
+    await onPreBuild({ inputs: { ejsonPrivateKeyEnvVarName: "EJSON_PRIVATE_KEY", ejsonSecretsFilePath: "./secrets.ejson" }, utils: utils });
+    expect(process.env.MY_SECRET).toBe("hello_world");
+  });
 });

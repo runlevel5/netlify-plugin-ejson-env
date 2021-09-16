@@ -6,8 +6,8 @@ module.exports = {
   async onPreBuild({
     inputs: { ejsonPrivateKeyEnvVarName, ejsonSecretsFilePath }, utils
   }) {
-    const command = `echo $${ejsonPrivateKeyEnvVarName} | ejson decrypt --key-from-stdin ${ejsonSecretsFilePath}`;
     const privateKey = process.env[ejsonPrivateKeyEnvVarName];
+    const command = `echo ${privateKey} | ejson decrypt --key-from-stdin ${ejsonSecretsFilePath}`;
 
     if ( typeof privateKey === 'undefined') {
       return utils.build.failBuild(
@@ -46,7 +46,5 @@ module.exports = {
         err.stderr
       );
     }
-
-    console.log(process.env)
   }
 }
