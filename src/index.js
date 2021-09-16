@@ -22,7 +22,7 @@ module.exports = {
       if (arch === 'x64') {
         arch = 'amd64'
       }
-      const downloadURL = `https://github.com/Shopify/ejson/releases/download/v1.3.0/${process.platform}-${process.arch}`
+      const downloadURL = `https://github.com/Shopify/ejson/releases/download/v1.3.0/${process.platform}-${arch}`
       try {
         await run('curl', ['-sL', `-o${ejsonBinaryPath}`, downloadURL])
         await run('chmod', ['+x', ejsonBinaryPath])
