@@ -8,6 +8,6 @@ tests/
 screenshot1.png
 .github
 node_modules
-bin/
+bin/ejson
 .envrc.example
 .envrc
