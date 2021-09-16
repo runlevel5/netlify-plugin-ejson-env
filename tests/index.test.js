@@ -1,10 +1,13 @@
 const onPreBuild = require('../src/index').onPreBuild;
+const error = require("@netlify/build/src/plugins/error");
+const run = require("@netlify/run-utils");
 
 describe('onPreBuild', () => {
   const OLD_ENV = process.env;
   const utils = {
+    run: run,
     build: {
-      failBuild: () => { throw "utils.build.failBuild" }
+      failBuild: error.failBuild
     }
   }
 
@@ -25,7 +28,7 @@ describe('onPreBuild', () => {
       try {
         await onPreBuild({ inputs: { ejsonPrivateKeyEnvVarName: "EJSON_PRIVATE_KEY" }, utils: utils });
       } catch(err) {
-        expect(err).toBe("utils.build.failBuild");
+        expect(err).toEqual(new Error("The EJSON_PRIVATE_KEY environment variable is not set"));
       }
     });
   });
@@ -33,9 +36,9 @@ describe('onPreBuild', () => {
   describe('when secret EJSON file does not exist', () => {
     it('raises error', async () => {
       try {
-        await onPreBuild({ inputs: { ejsonSecretsFilePath: "./missingFile.ejson" }, utils: utils });
+        await onPreBuild({ inputs: { ejsonPrivateKeyEnvVarName: "EJSON_PRIVATE_KEY", ejsonSecretsFilePath: "./missingFile.ejson" }, utils: utils });
       } catch(err) {
-        expect(err).toBe("utils.build.failBuild");
+        expect(err).toEqual(new Error("The ./missingFile.ejson file does not exist"));
       }
     });
   });

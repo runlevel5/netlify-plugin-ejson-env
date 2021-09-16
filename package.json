@@ -24,7 +24,9 @@
   "devDependencies": {
     "auto-changelog": "^1.16.2",
     "gh-release": "^3.5.0",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "@netlify/build": "^18.10.0",
+    "@netlify/run-utils": "^2.0.1"
   },
   "repository": "https://github.com/runlevel5/netlify-plugin-ejson-env",
   "bugs": {
