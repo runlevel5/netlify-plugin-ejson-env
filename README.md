@@ -67,6 +67,8 @@ Next, please create a new environment variable in Netlify build settings:
 EJSON_PRIVATE_KEY: "75b80b4a693156eb435f4ed2fe397e583f461f09fd99ec2bd1bdef0a56cf6e64"
 ```
 
+![Build environment](./screenshot1.png)
+
 Let's move on to install the plugin in the Netlify UI, use this [direct in-app installation link](https://app.netlify.com/plugins/netlify-plugin-ejson-env/install) or go to the [Plugins directory](https://app.netlify.com/plugins).
 
 For file-based installation, add the following lines to your `netlify.toml` file:
