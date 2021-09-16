@@ -1,6 +1,6 @@
 {
   "name": "@runlevel5/netlify-plugin-ejson-env",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Netlify plugin that would populate the environment with variables defined in EJSON secrets file",
   "main": "src/index.js",
   "dependencies": {},
