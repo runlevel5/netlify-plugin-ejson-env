@@ -1,0 +1,9 @@
+[build]
+  command = "echo 'hi'"
+  publish = "demo"
+
+[[plugins]]
+  package = "./src/index.js"
+  [plugins.inputs]
+    ejsonPrivateKeyEnvVarName = "EJSON_PRIVATE_KEY"
+    ejsonSecretsFilePath = "secrets.ejson"

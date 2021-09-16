@@ -1,0 +1,35 @@
+{
+  "name": "netlify-plugin-ejson-env",
+  "version": "0.0.1",
+  "description": "Netlify plugin that would populate the environment with variables defined in EJSON secrets file",
+  "main": "src/index.js",
+  "dependencies": {},
+  "scripts": {
+    "build": "netlify build",
+    "test": "jest",
+    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
+    "prepublishOnly": "git push && git push --tags && gh-release"
+  },
+  "keywords": [
+    "netlify",
+    "netlify-plugin",
+    "secrets",
+    "ejson"
+  ],
+  "author": "Trung Lê <trung.le@ruby-journal.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.17.0"
+  },
+  "devDependencies": {
+    "auto-changelog": "^1.16.2",
+    "gh-release": "^3.5.0",
+    "jest": "^25.1.0",
+    "@netlify/build": "^18.10.0",
+    "@netlify/run-utils": "^2.0.1"
+  },
+  "repository": "https://github.com/runlevel5/netlify-plugin-ejson-env",
+  "bugs": {
+    "url": "https://github.com/runlevel5/netlify-plugin-ejson-env/issues"
+  }
+}
