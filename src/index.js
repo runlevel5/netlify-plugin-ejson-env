@@ -27,6 +27,9 @@ module.exports = {
 
     // Decrypt and extract environment variables from EJSON file
     try {
+      // NOTE: I avoid using the Netlify's utils.run()
+      // because I don't want to display the stdout
+      // Ref: https://github.com/netlify/build/blob/main/packages/run-utils/src/main.js#L46
       const { stdout } = await exec(command);
       envVars = JSON.parse(stdout)["environment"] || {}
     } catch(err) {
